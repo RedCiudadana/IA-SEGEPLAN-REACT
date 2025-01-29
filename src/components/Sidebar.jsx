@@ -1,5 +1,6 @@
 // src/components/Sidebar.jsx
 import React from "react";
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
   return (
@@ -8,13 +9,13 @@ function Sidebar() {
       <div className="inner">
         {/* Primer bloque de menús */}
         <div className="single-menu-wrapper">
-          <a href="#" className="single-menu active openuptip" flow="right" tooltip="Search">
+          <Link to="/" className="single-menu active">
             <div className="icon">
-              <img src="assets/images/icons/01.png" alt="icons" />
+              <img src="/assets/images/icons/01.png" alt="icons" />
             </div>
             <p>Home</p>
-          </a>
-          <a href="community-feed.html" className="single-menu openuptip" flow="right" tooltip="Search">
+          </Link>
+          {/* <a href="community-feed.html" className="single-menu openuptip" flow="right" tooltip="Search">
             <div className="icon">
               <img src="assets/images/icons/02.png" alt="icons" />
             </div>
@@ -25,18 +26,19 @@ function Sidebar() {
               <img src="assets/images/icons/03.png" alt="icons" />
             </div>
             <p>Manage Subscription</p>
-          </a>
+          </a> */}
         </div>
 
         {/* Segundo bloque de menús */}
         <div className="single-menu-wrapper">
-          <a href="chatbot.html" className="single-menu openuptip" flow="right" tooltip="Search">
+          {/* Enlace a /chatbot */}
+          <Link to="/chatbot" className="single-menu">
             <div className="icon">
-              <img src="assets/images/icons/04.png" alt="icons" />
+              <img src="/assets/images/icons/04.png" alt="icons" />
             </div>
             <p>AI Chat Bot</p>
-          </a>
-          <a href="image-generator.html" className="single-menu openuptip" flow="right" tooltip="Search">
+          </Link>
+          {/* <a href="image-generator.html" className="single-menu openuptip" flow="right" tooltip="Search">
             <div className="icon">
               <img src="assets/images/icons/05.png" alt="icons" />
             </div>
@@ -47,11 +49,11 @@ function Sidebar() {
               <img src="assets/images/icons/06.png" alt="icons" />
             </div>
             <p>Voice Generate</p>
-          </a>
+          </a> */}
         </div>
 
         {/* Tercer bloque de menús */}
-        <div className="single-menu-wrapper">
+        {/* <div className="single-menu-wrapper">
           <a href="register.html" className="single-menu">
             <div className="icon">
               <img src="assets/images/icons/07.png" alt="icons" />
@@ -99,7 +101,7 @@ function Sidebar() {
             </div>
             <p>Logout</p>
           </a>
-        </div>
+        </div> */}
       </div>
 
       {/* Bloque inferior con el usuario */}
