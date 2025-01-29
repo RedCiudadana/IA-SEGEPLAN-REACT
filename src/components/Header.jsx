@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -6,13 +7,13 @@ function Header() {
       {/* header area */}
       <div className="header-area-one">
         <div className="container-30">
-          <div className="col-lg-12">
+          <div className="col-lg-12 my-4">
             <div className="header-inner-one">
               {/* Left side with logo */}
               <div className="left-logo-area">
-                <a href="index.html" className="logo">
+                <Link to="/">
                   <img src="assets/images/logo/logo-01.png" alt="logo-image" />
-                </a>
+                </Link>
                 <div className="left-side-open-clouse" id="collups-left">
                   <img src="assets/images/icons/01.svg" alt="icons" />
                 </div>
@@ -196,7 +197,7 @@ function Header() {
                   <div
                     className="single_action__haeader language user_avatar__information openuptip"
                     flow="down"
-                    tooltip="Notification"
+                    tooltip="Lenguage"
                   >
                     <svg
                       width="20"
