@@ -73,7 +73,7 @@ const Login = ({ onLogin }) => {
                 {/* <div className="other-separator">
                   <span>o</span>
                 </div> */}
-                <div className="sign-in-otherway">
+                {/* <div className="sign-in-otherway">
                   <div className="single">
                     <div className="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 533.5 544.3" width="18" height="18">
@@ -94,7 +94,7 @@ const Login = ({ onLogin }) => {
                     </div>
                     <p>Continua con Apple</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
