@@ -115,7 +115,7 @@ function Sidebar({ isCollapsed }) {
       {/* Bloque inferior con el usuario */}
       <div className="bottom-user">
         <div className="user-wrapper">
-          <img src="assets/images/avatar/02.png" alt="avatar" />
+          <img src="/redciudadana.png" style={{ width: '50px' }} alt="avatar" />
           <div className="info">
             <h6 className="title">Red Ciudadana</h6>
             <a href="#">redciudadana@net.com</a>

@@ -303,7 +303,7 @@ function Header({ onToggleSidebar }) {
                   {/* User avatar / Profile */}
                   <div className="single_action__haeader user_avatar__information openuptip" flow="down" tooltip="Profile">
                     <div className="avatar">
-                      <img src="/assets/images/avatar/01.png" alt="avatar" />
+                      <img  src="/redciudadana.png" style={{ width: '50px' }} alt="avatar" />
                     </div>
                     <div className="user_information_main_wrapper slide-down__click">
                       <div className="user_header">
