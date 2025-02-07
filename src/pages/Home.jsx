@@ -7,14 +7,14 @@ function Home() {
       {/* Banner principal */}
       <div className="banner-badge bg_image">
         <div className="inner">
-          <h3 className="title">Openup AI Generator</h3>
+          <h3 className="title">Lab IA Red Ciudadana</h3>
           <p className="dsic my-4">
             Openup&nbsp;is the place to create, publish and monetize content using the power of AI.
             Use the Openup AI Studio to create amazing generative images, music, and audio.
           </p>
           <br/>
           <br/>
-          <a href="#" className="rts-btn btn-blur">Try Now</a>
+          <a href="#" className="rts-btn btn-blur">Partcipa</a>
           <div className="inner-right-iamge">
             <img src="assets/images/banner/01.png" alt="banner" />
           </div>
