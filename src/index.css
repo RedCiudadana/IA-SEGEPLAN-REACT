@@ -9141,7 +9141,7 @@ audio:not([controls]) {
 }
 
 a {
-  color: var(--color-heading);
+  /* color: var(--color-heading); */
   text-decoration: none;
   outline: none;
 }
@@ -15644,12 +15644,11 @@ body.sal-disabled [data-sal|=flip] {
 }
 .dash-board-main-wrapper .left-side-bar .single-menu-wrapper a.collapse-btn::after {
   position: absolute;
-  content: "\f078";
+  content: "↓";
   right: 10px;
   font-size: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-three);
 }
 .dash-board-main-wrapper .left-side-bar .single-menu-wrapper a.collapse-btn[aria-expanded=true] {
   background: #F7F7FF;
@@ -17757,7 +17756,7 @@ body.modal-open {
   background: #121b32;
 }
 [data-theme=dark] .dash-board-main-wrapper .left-side-bar {
-  background: transparent;
+  background: #090E18;
 }
 [data-theme=dark] .image-generatore-right-sidebar-content .single-diamention .nice-select-wrap .drop::after {
   color: #ffffff;

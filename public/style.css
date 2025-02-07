@@ -17760,7 +17760,7 @@ body.modal-open {
   background: #121b32;
 }
 [data-theme=dark] .dash-board-main-wrapper .left-side-bar {
-  background: transparent;
+  background: #090E18!important;
 }
 [data-theme=dark] .image-generatore-right-sidebar-content .single-diamention .nice-select-wrap .drop::after {
   color: #ffffff;

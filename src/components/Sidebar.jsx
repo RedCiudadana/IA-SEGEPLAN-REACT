@@ -1,107 +1,115 @@
-// src/components/Sidebar.jsx
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ isCollapsed }) {
+  const navigate = useNavigate(); // Para redirigir después de cerrar sesión
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("authToken"); // Elimina el token de autenticación
+    navigate("/login"); // Redirige al login
+  };
+
   return (
-    <div className="left-side-bar">
+    <div className={`left-side-bar ${isCollapsed ? "collapsed" : ""}`}>
       <div className="overlay-mobile-area"></div>
       <div className="inner">
         {/* Primer bloque de menús */}
         <div className="single-menu-wrapper">
-          <Link to="/" className="single-menu active">
+          <Link to="/" className="single-menu">
             <div className="icon">
               <img src="/assets/images/icons/01.png" alt="icons" />
             </div>
             <p>Home</p>
           </Link>
-          {/* <a href="community-feed.html" className="single-menu openuptip" flow="right" tooltip="Search">
+          <Link to="/" className="single-menu">
             <div className="icon">
-              <img src="assets/images/icons/02.png" alt="icons" />
+              <img src="/assets/images/icons/02.png" alt="icons" />
             </div>
-            <p>Community Feed</p>
-          </a>
-          <a href="manage-subscription.html" className="single-menu openuptip" flow="right" tooltip="Search">
-            <div className="icon">
-              <img src="assets/images/icons/03.png" alt="icons" />
-            </div>
-            <p>Manage Subscription</p>
-          </a> */}
+            <p>Acerca de</p>
+          </Link>
         </div>
 
         {/* Segundo bloque de menús */}
         <div className="single-menu-wrapper">
-          {/* Enlace a /chatbot */}
           <Link to="/chatbot" className="single-menu">
             <div className="icon">
               <img src="/assets/images/icons/04.png" alt="icons" />
             </div>
-            <p>AI Chat Bot</p>
+            <p>Prototipo 1</p>
           </Link>
-          {/* <a href="image-generator.html" className="single-menu openuptip" flow="right" tooltip="Search">
+          <Link to="/" className="single-menu">
             <div className="icon">
-              <img src="assets/images/icons/05.png" alt="icons" />
+              <img src="/assets/images/icons/05.png" alt="icons" />
             </div>
-            <p>Image Generator</p>
-          </a>
-          <a href="#" className="single-menu openuptip" flow="right" tooltip="Search">
+            <p>Prototipo 2</p>
+          </Link>
+          <Link to="/login" className="single-menu">
             <div className="icon">
-              <img src="assets/images/icons/06.png" alt="icons" />
+              <img src="/assets/images/icons/06.png" alt="icons" />
             </div>
-            <p>Voice Generate</p>
-          </a> */}
+            <p>Prototipo 3</p>
+          </Link>
         </div>
 
         {/* Tercer bloque de menús */}
-        {/* <div className="single-menu-wrapper">
-          <a href="register.html" className="single-menu">
+        <div className="single-menu-wrapper">
+          <Link to="/" className="single-menu">
             <div className="icon">
-              <img src="assets/images/icons/07.png" alt="icons" />
+              <img src="/assets/images/icons/07.png" alt="icons" />
             </div>
-            <p>Register</p>
-          </a>
-          <a
+            <p>Registrate</p>
+          </Link>
+
+          <Link
+            to="#"
             className="collapse-btn collapsed single-menu"
-            data-bs-toggle="collapse"
-            href="#collapseExample"
             role="button"
             aria-expanded="false"
             aria-controls="collapseExample"
+            onClick={(e) => {
+              e.preventDefault();
+              const collapseElement = document.getElementById("collapseExample");
+              collapseElement.classList.toggle("show");
+            }}
           >
             <div className="icon">
-              <img src="assets/images/icons/08.png" alt="icons" />
+              <img src="/assets/images/icons/08.png" alt="icons" />
             </div>
-            <p>Settings</p>
-          </a>
+            <p>Ajustes</p>
+          </Link>
+
           <div className="collapse" id="collapseExample">
             <ul className="submenu rts-default-sidebar-list">
               <li>
-                <a href="faq.html">
+                <Link to="/faq" className="submenu-link">
                   <i className="fa-sharp fa-regular fa-user"></i>
                   <span>FAQ's</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="login.html">
-                  <i className="fa-sharp fa-regular fa-shopping-bag"></i>
-                  <span>Log In</span>
-                </a>
+                <Link to="/login" className="submenu-link">
+                  <i className="fa-solid fa-bag-shopping"></i>
+                  <span>Inicia Sesión</span>
+                </Link>
               </li>
               <li>
-                <a href="reset-password.html">
-                  <i className="fa-sharp fa-regular fa-users"></i>
-                  <span>Reset Password</span>
-                </a>
+                <Link to="/reset-password" className="submenu-link">
+                  <i className="fa-solid fa-user"></i>
+                  <span>Resetea tu Contraseña</span>
+                </Link>
               </li>
             </ul>
           </div>
-          <a href="#" className="single-menu">
+
+          {/* Botón para cerrar sesión */}
+          <a href="#" className="single-menu" onClick={handleLogout}>
             <div className="icon">
-              <img src="assets/images/icons/09.png" alt="icons" />
+              <img src="/assets/images/icons/09.png" alt="icons" />
             </div>
-            <p>Logout</p>
+            <p>Cierra Sesión</p>
           </a>
-        </div> */}
+        </div>
       </div>
 
       {/* Bloque inferior con el usuario */}
@@ -109,8 +117,8 @@ function Sidebar() {
         <div className="user-wrapper">
           <img src="assets/images/avatar/02.png" alt="avatar" />
           <div className="info">
-            <h6 className="title">Mack Gok</h6>
-            <a href="#">openup@net.com</a>
+            <h6 className="title">Red Ciudadana</h6>
+            <a href="#">redciudadana@net.com</a>
           </div>
           <span>Free</span>
         </div>

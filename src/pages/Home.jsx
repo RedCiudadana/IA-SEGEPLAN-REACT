@@ -23,7 +23,7 @@ function Home() {
 
       {/* Sección de búsqueda / generador */}
       <div className="search__generator mt--50">
-        <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        {/* <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li className="nav-item" role="presentation">
             <button
               className="nav-link active"
@@ -69,15 +69,15 @@ function Home() {
               Voice
             </button>
           </li>
-        </ul>
+        </ul> */}
 
         {/* Área de "search option" */}
-        <div className="searchoptopn-area">
+        {/* <div className="searchoptopn-area">
           <input type="text" placeholder="Describe what you would like to see..." />
           <button>
             Generate <img src="assets/images/icons/13.png" alt="" />
           </button>
-        </div>
+        </div> */}
 
         {/* Contenido de los tabs */}
         <div className="tab-content mt--50" id="pills-tabContent">
@@ -96,12 +96,12 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Create Image</h5>
+                      <h5 className="title">Prototipo 1</h5>
                       <p className="disc">
-                        Our text-to-image feature turns your words into beautiful AI visuals.
+                        Ayudante para escribir oficios gubernamentales.
                       </p>
                     </div>
-                    <button className="rts-btn btn-primary">Generate</button>
+                    <button className="rts-btn btn-primary">Utilízalo</button>
                   </div>
                 </div>
               </div>
@@ -113,12 +113,12 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Create Image</h5>
+                      <h5 className="title">Prototipo 2</h5>
                       <p className="disc">
-                        Our text-to-image feature turns your words into beautiful AI visuals.
+                        Lorem ipsum dolor sit amet.
                       </p>
                     </div>
-                    <button className="rts-btn btn-primary">Generate</button>
+                    <button className="rts-btn btn-primary">Utilízalo</button>
                   </div>
                 </div>
               </div>
@@ -130,12 +130,12 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Create Image</h5>
+                      <h5 className="title">Prototipo 3</h5>
                       <p className="disc">
-                        Our text-to-image feature turns your words into beautiful AI visuals.
+                      Lorem ipsum dolor sit amet.
                       </p>
                     </div>
-                    <button className="rts-btn btn-primary">Generate</button>
+                    <button className="rts-btn btn-primary">Utilízalo</button>
                   </div>
                 </div>
               </div>
