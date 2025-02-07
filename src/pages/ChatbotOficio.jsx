@@ -48,7 +48,7 @@ function ChatbotOficio() {
 
   return (
     <>
-      <div class="main-center-content-m-left center-content search-sticky">
+      <div class="center-content search-sticky">
         <div className="question_answer__wrapper__chatbot">
           {chatHistory.map((entry, index) => (
             <div key={index} className="single__question__answer">

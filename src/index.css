@@ -15740,15 +15740,24 @@ body.sal-disabled [data-sal|=flip] {
   filter: brightness(0) saturate(100%) invert(100%) sepia(97%) saturate(13%) hue-rotate(237deg) brightness(104%) contrast(104%);
 }
 
-.main-center-content-m-left {
+.main-center-content-m-left-2{
   margin-left: 160px;
+  transition: all 0.4s ease;
+}
+
+.main-center-content-m-left {
+  margin-left: 305px;
   transition: all 0.4s ease;
 }
 @media only screen and (max-width: 1199px) {
   .main-center-content-m-left {
     margin-left: 60px;
   }
-  .main-center-content-m-left.center-content{
+
+  .main-center-content-m-left2 {
+    margin-left: 60px;
+  }
+  .main-center-content-m-left2.center-content{
     min-width: 100%!important;
     max-width: 100%!important;
   }
