@@ -15741,12 +15741,16 @@ body.sal-disabled [data-sal|=flip] {
 }
 
 .main-center-content-m-left {
-  margin-left: 305px;
+  margin-left: 160px;
   transition: all 0.4s ease;
 }
 @media only screen and (max-width: 1199px) {
   .main-center-content-m-left {
     margin-left: 60px;
+  }
+  .main-center-content-m-left.center-content{
+    min-width: 100%!important;
+    max-width: 100%!important;
   }
 }
 @media only screen and (max-width: 767px) {
