@@ -1,5 +1,6 @@
 // src/pages/Home.jsx
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Home() {
   return (
@@ -101,7 +102,9 @@ function Home() {
                         Ayudante para escribir oficios gubernamentales.
                       </p>
                     </div>
-                    <button className="rts-btn btn-primary">Utilízalo</button>
+                    <Link to="/chatbot" className="rts-btn btn-primary">
+                      <span>Utilízalo</span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -115,10 +118,12 @@ function Home() {
                     <div className="left-content-area">
                       <h5 className="title">Prototipo 2</h5>
                       <p className="disc">
-                        Lorem ipsum dolor sit amet.
+                        Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
                       </p>
                     </div>
-                    <button className="rts-btn btn-primary">Utilízalo</button>
+                    <Link to="/" className="rts-btn btn-primary">
+                      <span>Utilízalo</span>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -132,10 +137,12 @@ function Home() {
                     <div className="left-content-area">
                       <h5 className="title">Prototipo 3</h5>
                       <p className="disc">
-                      Lorem ipsum dolor sit amet.
+                      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
                       </p>
                     </div>
-                    <button className="rts-btn btn-primary">Utilízalo</button>
+                    <Link to="/" className="rts-btn btn-primary">
+                      <span>Utilízalo</span>
+                    </Link>
                   </div>
                 </div>
               </div>
