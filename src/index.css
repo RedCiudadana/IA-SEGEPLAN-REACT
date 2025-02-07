@@ -15741,8 +15741,8 @@ body.sal-disabled [data-sal|=flip] {
 }
 
 .main-center-content-m-left-2{
-  margin-left: 160px;
-  transition: all 0.4s ease;
+  max-width: 70%;
+  max-width: 70%;
 }
 
 .main-center-content-m-left {

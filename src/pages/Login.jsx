@@ -49,7 +49,7 @@ const Login = ({ onLogin }) => {
                       />
                     </div>
                     <div className="check-wrapper">
-                      <div className="form-check">
+                      {/* <div className="form-check">
                         <input
                           className="form-check-input"
                           type="checkbox"
@@ -60,7 +60,7 @@ const Login = ({ onLogin }) => {
                         <label className="form-check-label" htmlFor="flexCheckDefault">
                           Captcha
                         </label>
-                      </div>
+                      </div> */}
                       <Link to="/reset">¿Olvidó la contraseña?</Link>
                     </div>
                     <button type="submit" className="rts-btn btn-primary">Inicia Sesión</button>
@@ -70,9 +70,9 @@ const Login = ({ onLogin }) => {
                     </p>
                   </form>
                 </div>
-                <div className="other-separator">
+                {/* <div className="other-separator">
                   <span>o</span>
-                </div>
+                </div> */}
                 <div className="sign-in-otherway">
                   <div className="single">
                     <div className="icon">
