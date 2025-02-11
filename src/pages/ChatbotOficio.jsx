@@ -66,7 +66,7 @@ function ChatbotOficio() {
               {/* Pregunta del usuario */}
               <div className="question_user">
                 <div className="left_user_info">
-                  <img src="assets/images/avatar/03.png" alt="avatar" />
+                  <img style={{ width: '50px' }} src="/redciudadana.png" alt="avatar" />
                   <div className="question__user">{entry.user}</div>
                 </div>
                 <div className="edit__icon openuptip" tooltip="Edit It">
