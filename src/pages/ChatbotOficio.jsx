@@ -118,7 +118,7 @@ function ChatbotOficio() {
           </form>
           <div className="copyright-area-bottom">
             <p>
-              <a href="#">Reactheme©</a> 2024. All Rights Reserved.
+              Un proyecto con la asistencia técnica de la <a href="https://redciudadana.org/">Asociación Civil Red Ciudadana</a> - 2025
             </p>
           </div>
         </div>

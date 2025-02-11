@@ -118,7 +118,7 @@ function Sidebar({ isCollapsed }) {
           <img src="/redciudadana.png" style={{ width: '50px' }} alt="avatar" />
           <div className="info">
             <h6 className="title">Red Ciudadana</h6>
-            <a href="#">redciudadana@net.com</a>
+            <a href="#">ia@redciudadana.org.gt</a>
           </div>
           <span>Free</span>
         </div>

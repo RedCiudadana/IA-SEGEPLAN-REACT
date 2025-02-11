@@ -10,12 +10,14 @@ function Home() {
         <div className="inner">
           <h3 className="title">Lab IA Red Ciudadana</h3>
           <p className="dsic my-4">
-            Openup&nbsp;is the place to create, publish and monetize content using the power of AI.
-            Use the Openup AI Studio to create amazing generative images, music, and audio.
+          Bienvenido a la Plataforma IA-SEGEPLAN, una herramienta diseñada para potenciar la transformación digital en la planificación pública mediante asistentes virtuales de inteligencia artificial (IA).
+          {/* <br/>
+          <br/>⚠️ Nota Importante:
+          La IA es una herramienta de apoyo y requiere supervisión humana. Los resultados deben ser revisados antes de su uso oficial. */}
           </p>
           <br/>
           <br/>
-          <a href="#" className="rts-btn btn-blur">Partcipa</a>
+          {/* <a href="#" className="rts-btn btn-blur">Partcipa</a> */}
           <div className="inner-right-iamge">
             <img src="assets/images/banner/01.png" alt="banner" />
           </div>
@@ -97,9 +99,9 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Prototipo 1</h5>
+                      <h5 className="title">Asistente de Redacción de Documentos</h5>
                       <p className="disc">
-                        Ayudante para escribir oficios gubernamentales.
+                      Genera borradores de cartas, oficios y documentos oficiales.
                       </p>
                     </div>
                     <Link to="/chatbot" className="rts-btn btn-primary">
@@ -116,9 +118,9 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Prototipo 2</h5>
+                      <h5 className="title">Asistente de Análisis de Expedientes</h5>
                       <p className="disc">
-                        Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                      Evalúa expedientes y genera resúmenes automatizados para facilitar su análisis.
                       </p>
                     </div>
                     <Link to="/" className="rts-btn btn-primary">
@@ -135,9 +137,9 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Prototipo 3</h5>
+                      <h5 className="title">Asistente de Análisis de Políticas Públicas</h5>
                       <p className="disc">
-                      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                      Evalúa políticas públicas y proporciona análisis comparativos y recomendaciones.
                       </p>
                     </div>
                     <Link to="/" className="rts-btn btn-primary">
@@ -280,7 +282,7 @@ function Home() {
         </div>
       </div>
       <div className="copyright-area-bottom">
-				<p> <a href="#">Reactheme©</a> 2024. All Rights Reserved.</p>
+				<p> Un proyecto con la asistencia técnica de la <a href="https://redciudadana.org/">Asociación Civil Red Ciudadana</a> - 2025</p>
 			</div>
     </>
   );
