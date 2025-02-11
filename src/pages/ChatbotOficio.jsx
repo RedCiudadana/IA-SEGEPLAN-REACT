@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import OpenAI from 'openai';
+import ReactMarkdown from 'react-markdown';
 
 function ChatbotOficio() {
   const [userMessage, setUserMessage] = useState('');
@@ -19,8 +20,18 @@ function ChatbotOficio() {
 
     try {
       const completion = await openai.chat.completions.create({
-        model: 'gpt-4o-mini', 
-        messages: [{ role: 'user', content: userMessage }],
+        model: 'gpt-4o-mini',
+        messages: [
+          {
+            role: 'system',
+            content: `Eres un asistente especializado en redactar documentos formales.
+                      Por favor, devuelve todas tus respuestas en formato Markdown.`
+          },
+          {
+            role: 'user',
+            content: userMessage
+          }
+        ],
       });
 
       const responseContent = completion.choices[0]?.message?.content || '';
@@ -48,10 +59,11 @@ function ChatbotOficio() {
 
   return (
     <>
-      <div class="main-center-content-m-left-2 center-content search-sticky">
+      <div className="main-center-content-m-left-2 center-content search-sticky">
         <div className="question_answer__wrapper__chatbot">
           {chatHistory.map((entry, index) => (
             <div key={index} className="single__question__answer">
+              {/* Pregunta del usuario */}
               <div className="question_user">
                 <div className="left_user_info">
                   <img src="assets/images/avatar/03.png" alt="avatar" />
@@ -61,13 +73,17 @@ function ChatbotOficio() {
                   <i className="fs-20 fa-regular fa-pen-to-square" />
                 </div>
               </div>
+
+              {/* Respuesta del bot */}
               <div className="answer__area">
                 <div className="thumbnail">
                   <img src="assets/images/avatar/04.png" alt="avatar" />
                 </div>
                 <div className="answer_main__wrapper">
                   <h4 className="common__title">Respuesta del ChatGPT</h4>
-                  <p className="disc">{entry.bot}</p>
+                  <div className="disc">
+                    <ReactMarkdown>{entry.bot}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
             </div>
