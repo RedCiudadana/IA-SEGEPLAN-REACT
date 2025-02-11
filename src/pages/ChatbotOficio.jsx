@@ -60,6 +60,22 @@ function ChatbotOficio() {
   return (
     <>
       <div className="main-center-content-m-left-2 center-content search-sticky">
+        {/* Banner principal */}
+        <div className="banner-badge bg_image mb-4">
+          <div className="inner">
+            <h3 className="title">Lab IA Red Ciudadana</h3>
+            <p className="dsic my-4">
+              Openup&nbsp;is the place to create, publish and monetize content using the power of AI.
+              Use the Openup AI Studio to create amazing generative images, music, and audio.
+            </p>
+            <br/>
+            <br/>
+            <a href="#" className="rts-btn btn-blur">Partcipa</a>
+            <div className="inner-right-iamge">
+              <img src="assets/images/banner/01.png" alt="banner" />
+            </div>
+          </div>
+        </div>
         <div className="question_answer__wrapper__chatbot">
           {chatHistory.map((entry, index) => (
             <div key={index} className="single__question__answer">
