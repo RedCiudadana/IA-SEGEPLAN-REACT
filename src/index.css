@@ -16945,9 +16945,8 @@ body.chatbot::-webkit-scrollbar {
 .chat-history-area-start .single-history p {
   margin-bottom: 0;
   color: #001C42;
-  font-size: 15px;
-  font-weight: 500;
-  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 100;
   font-family: var(--font-secondary);
 }
 .chat-history-area-start .single-history:hover {
@@ -17842,3 +17841,24 @@ body.modal-open {
 [data-theme=dark] .loading-indicator{
   color: #fff;
 }
+
+.single-history p {
+  margin-bottom: 0.5rem;
+}
+
+/* Cuando está colapsado (solo 3 líneas) */
+.collapsed {
+  display: -webkit-box;              /* Requerido para el line-clamp */
+  -webkit-line-clamp: 5;            /* Número de líneas a mostrar */
+  -webkit-box-orient: vertical;     /* Orientación vertical para el line-clamp */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;              /* Si usas nowrap, todo iría en una sola línea */
+}
+
+/* Cuando está expandido (texto completo) */
+.expanded {
+  display: block;
+  /* Sin restricciones */
+}
+
