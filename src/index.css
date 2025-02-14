@@ -17862,3 +17862,7 @@ body.modal-open {
   /* Sin restricciones */
 }
 
+.disc code{
+  font-size: 16px;
+  font-family: var(--font-primary);
+}
