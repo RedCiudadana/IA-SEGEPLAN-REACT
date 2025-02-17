@@ -10,8 +10,8 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
     
     // Validación de credenciales específicas
-    const validEmail = 'ia@redciudadana.org';
-    const validPassword = 'ia.red1';
+    const validEmail = import.meta.env.VITE_EMAIL;
+    const validPassword = import.meta.env.VITE_PASSWORD;
 
     if (email === validEmail && password === validPassword) {
       onLogin(); // Cambia el estado de autenticación
