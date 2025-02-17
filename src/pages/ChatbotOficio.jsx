@@ -58,7 +58,7 @@ function ChatbotOficio() {
 
   const historyData = [
     {
-      date: 'Prompts para escribir oficios',
+      date: 'Plantillas para escribir oficios',
       messages: [
         `Carta Formal de Solicitud de Cooperación Técnica
 
@@ -143,13 +143,13 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
             <p className="dsic my-4" style={{ color: '#fff' }}>
               <b>🌟 ¡Bienvenido al módulo de Asistentes Virtuales de IA de SEGEPLAN! 🌟</b>
               <br />Esta herramienta ha sido diseñada para facilitar tu trabajo diario, permitiéndote generar documentos, analizar expedientes y evaluar políticas públicas con el apoyo de la inteligencia artificial.
-              <br />📌 ¿Cómo funciona?
+              <br/><br />📌 <b>¿Cómo funciona?</b>
               <br />1. Ingresa la información clave utilizando un prompt bien estructurado.
               <br />2. Revisa los ejemplos de prompts en la columna de la derecha para optimizar tu solicitud. ✅
               <br />3. Revisa y ajusta el resultado generado por la IA antes de utilizarlo.
               <br />4. Modifica y personaliza el texto según las necesidades institucionales. 🔍
-              <br />📢 Recuerda: La IA es una herramienta de apoyo. Siempre revisa los resultados y haz los ajustes necesarios antes de su uso oficial.
-              <br />⚠ Supervisión humana recomendada antes de su publicación. 
+              <br /><br />📢 <b>Recuerda:</b> La IA es una herramienta de apoyo. Siempre revisa los resultados y haz los ajustes necesarios antes de su uso oficial.
+              <br /><br />⚠ <b>Supervisión humana recomendada</b> antes de su publicación. 
             </p>
           </div>
         )}
@@ -172,7 +172,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
                   <img src="assets/images/avatar/04.png" alt="avatar" />
                 </div>
                 <div className="answer_main__wrapper">
-                  <h4 className="common__title">Respuesta del ChatGPT</h4>
+                  <h4 className="common__title">Respuesta</h4>
                   {/* NUEVO: Ajustamos el tamaño de fuente aquí */}
                   <div className="disc" style={{ fontSize: '1rem', lineHeight: '1.5' }}>
                     <ReactMarkdown>{entry.bot}</ReactMarkdown>

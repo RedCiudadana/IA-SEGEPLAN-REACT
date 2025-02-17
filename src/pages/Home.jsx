@@ -25,7 +25,7 @@ function Home() {
       </div>
 
       {/* Sección de búsqueda / generador */}
-      <div className="search__generator mt--50">
+      <div className="search__generator mt--20">
         {/* <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li className="nav-item" role="presentation">
             <button
@@ -83,7 +83,7 @@ function Home() {
         </div> */}
 
         {/* Contenido de los tabs */}
-        <div className="tab-content mt--50" id="pills-tabContent">
+        <div className="tab-content mt--20" id="pills-tabContent">
           {/* Tab 1: Image */}
           <div
             className="tab-pane fade show active"
@@ -91,7 +91,7 @@ function Home() {
             role="tabpanel"
             aria-labelledby="pills-home-tab"
           >
-            <div className="row g-5">
+            <div className="row g-5 my-4">
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
@@ -105,7 +105,7 @@ function Home() {
                       </p>
                     </div>
                     <Link to="/chatbot" className="rts-btn btn-primary">
-                      <span>Utilízalo</span>
+                      <span>Explora</span>
                     </Link>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ function Home() {
                       </p>
                     </div>
                     <Link to="/" className="rts-btn btn-primary">
-                      <span>Utilízalo</span>
+                      <span>Explora</span>
                     </Link>
                   </div>
                 </div>
@@ -143,7 +143,66 @@ function Home() {
                       </p>
                     </div>
                     <Link to="/" className="rts-btn btn-primary">
-                      <span>Utilízalo</span>
+                      <span>Explora</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row g-5 my-4">
+              <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div className="single-image-generator">
+                  <a href="#" className="thumbnail">
+                    <img src="assets/images/generator/01.jpg" alt="images" />
+                  </a>
+                  <div className="inner-content">
+                    <div className="left-content-area">
+                      <h5 className="title">Asistente de Redacción de Documentos</h5>
+                      <p className="disc">
+                      Genera borradores de cartas, oficios y documentos oficiales.
+                      </p>
+                    </div>
+                    <Link to="/chatbot" className="rts-btn btn-primary">
+                      <span>Explora</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div className="single-image-generator">
+                  <a href="#" className="thumbnail">
+                    <img src="assets/images/generator/02.jpg" alt="images" />
+                  </a>
+                  <div className="inner-content">
+                    <div className="left-content-area">
+                      <h5 className="title">Asistente de Análisis de Expedientes</h5>
+                      <p className="disc">
+                      Evalúa expedientes y genera resúmenes automatizados para facilitar su análisis.
+                      </p>
+                    </div>
+                    <Link to="/" className="rts-btn btn-primary">
+                      <span>Explora</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div className="single-image-generator">
+                  <a href="#" className="thumbnail">
+                    <img src="assets/images/generator/03.jpg" alt="images" />
+                  </a>
+                  <div className="inner-content">
+                    <div className="left-content-area">
+                      <h5 className="title">Asistente de Análisis de Políticas Públicas</h5>
+                      <p className="disc">
+                      Evalúa políticas públicas y proporciona análisis comparativos y recomendaciones.
+                      </p>
+                    </div>
+                    <Link to="/" className="rts-btn btn-primary">
+                      <span>Explora</span>
                     </Link>
                   </div>
                 </div>

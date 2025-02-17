@@ -20,7 +20,7 @@ function Sidebar({ isCollapsed }) {
             <div className="icon">
               <img src="/assets/images/icons/01.png" alt="icons" />
             </div>
-            <p>Home</p>
+            <p>Inicio</p>
           </Link>
           <Link to="/" className="single-menu">
             <div className="icon">
@@ -118,9 +118,9 @@ function Sidebar({ isCollapsed }) {
           <img src="/redciudadana.png" style={{ width: '50px' }} alt="avatar" />
           <div className="info">
             <h6 className="title">Red Ciudadana</h6>
-            <a href="#">ia@redciudadana.org.gt</a>
+            <a href="#">ia@redciudadana.org</a>
           </div>
-          <span>Free</span>
+          {/* <span>Free</span> */}
         </div>
         <div className="pro-upgrade">
           <button
@@ -130,7 +130,7 @@ function Sidebar({ isCollapsed }) {
             data-bs-whatever="@mdo"
           >
             <img src="assets/images/icons/14.png" alt="icons" />
-            Upgrade To Pro
+            Perfil
           </button>
         </div>
       </div>

@@ -53,7 +53,7 @@ function Header({ onToggleSidebar }) {
 
                 <div className="action-interactive-area__header">
                   {/* Search Action */}
-                  <div className="single_action__haeader search-action openuptip" flow="down" tooltip="Search">
+                  <div className="single_action__haeader search-action openuptip" flow="down" tooltip="Búsqueda">
                     <svg
                       width="20"
                       height="20"
@@ -77,7 +77,7 @@ function Header({ onToggleSidebar }) {
                   </div>
 
                   {/* Notification */}
-                  <div className="single_action__haeader notification openuptip" flow="down" tooltip="Notification">
+                  <div className="single_action__haeader notification openuptip" flow="down" tooltip="Notificaciones">
                     <svg
                       width="20"
                       height="20"
@@ -214,7 +214,7 @@ function Header({ onToggleSidebar }) {
                   <div
                     className="single_action__haeader language user_avatar__information openuptip"
                     flow="down"
-                    tooltip="Lenguage"
+                    tooltip="Lenguaje"
                   >
                     <svg
                       width="20"
@@ -238,8 +238,7 @@ function Header({ onToggleSidebar }) {
                     </svg>
                     <div className="user_information_main_wrapper slide-down__click language-area">
                       <ul className="select-language-area">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Bangla</a></li>
+                        <li><a href="#">Inglés</a></li>
                         <li><a href="#">Hindi</a></li>
                         <li><a href="#">Latin</a></li>
                       </ul>
@@ -250,7 +249,7 @@ function Header({ onToggleSidebar }) {
                   <div
                     className="single_action__haeader rts-dark-light openuptip"
                     flow="down"
-                    tooltip="Dark / Light"
+                    tooltip="Claro / Oscuro"
                     onClick={toggleTheme} // Llama a la función para cambiar el tema
                     style={{ cursor: 'pointer' }}
                   >
@@ -301,7 +300,7 @@ function Header({ onToggleSidebar }) {
                   </div>
 
                   {/* User avatar / Profile */}
-                  <div className="single_action__haeader user_avatar__information openuptip" flow="down" tooltip="Profile">
+                  <div className="single_action__haeader user_avatar__information openuptip" flow="down" tooltip="Perfil">
                     <div className="avatar">
                       <img  src="/redciudadana.png" style={{ width: '50px' }} alt="avatar" />
                     </div>
@@ -311,8 +310,8 @@ function Header({ onToggleSidebar }) {
                           <img src="/assets/images/avatar/user-2.svg" alt="user" />
                         </div>
                         <div className="user_naim-information">
-                          <h3 className="title">MR.Crow Kader</h3>
-                          <span className="desig">CEO, Valo How Masud</span>
+                          <h3 className="title">Red Ciudadana</h3>
+                        {/* <span className="desig">CEO, Valo How Masud</span> */}
                         </div>
                       </div>
                       <div className="user_body_content">
@@ -320,31 +319,31 @@ function Header({ onToggleSidebar }) {
                           <li className="single_items">
                             <a className="hader_popup_link" href="#">
                               <i className="fa-light fa-user" />
-                              Profile
+                              Perfile
                             </a>
                           </li>
                           <li className="single_items">
                             <a className="hader_popup_link" href="#">
                               <i className="fa-regular fa-gear" />
-                              Settings
+                              Configuración
                             </a>
                           </li>
                           <li className="single_items">
                             <a className="hader_popup_link" href="#">
                               <i className="fa-light fa-person-snowmobiling" />
-                              Billing
+                              Precios
                             </a>
                           </li>
                           <li className="single_items">
                             <a className="hader_popup_link" href="#">
                               <i className="fa-solid fa-wave-pulse" />
-                              Activity
+                              Actividad
                             </a>
                           </li>
                           <li className="single_items">
                             <a className="hader_popup_link" href="#">
                               <i className="fa-regular fa-bell" />
-                              Help
+                              Ayuda
                             </a>
                           </li>
                         </ul>
