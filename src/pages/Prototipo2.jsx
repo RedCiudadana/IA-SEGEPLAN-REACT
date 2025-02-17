@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import OpenAI from 'openai';
 import ReactMarkdown from 'react-markdown';
 
-function ChatbotOficio() {
+function Prototipo2() {
   const [userMessage, setUserMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -210,7 +210,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
           {loading && <div className="loading-indicator">Cargando...</div>}
 
           <form onSubmit={handleSubmit} className="search-form">
-            <textarea
+            <input
               type="text"
               placeholder="Escribe tu pregunta..."
               value={userMessage}
@@ -273,4 +273,4 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
   );
 }
 
-export default ChatbotOficio;
+export default Prototipo2;

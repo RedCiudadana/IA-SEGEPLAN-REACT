@@ -16461,6 +16461,18 @@ body.sal-disabled [data-sal|=flip] {
   background: #F7F7FF;
   border-radius: 4px;
 }
+
+.search-form textarea {
+  min-height: 100px;
+  max-height: 150px;
+  width: 100%;
+  bottom: 20px;
+  border: 1px solid var(--color-primary);
+  background: #F7F7FF;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
 .search-form button {
   position: absolute;
   right: 20px;
@@ -16492,6 +16504,10 @@ body.chatbot::-webkit-scrollbar {
   max-width: 80%;
 }
 .main-center-content-m-left.center-content.collapsed .search-form input {
+  max-width: 80%;
+}
+
+.main-center-content-m-left.center-content.collapsed .search-form textarea {
   max-width: 80%;
 }
 
@@ -16619,6 +16635,16 @@ body.chatbot::-webkit-scrollbar {
   bottom: 77px;
 }
 .chatbot .search-sticky .search-form.active input {
+  height: 55px;
+  bottom: 95px;
+  transition: 0s !important;
+}
+
+.chatbot .search-sticky .search-form textarea {
+  transition: 0s;
+}
+
+.chatbot .search-sticky .search-form.active textarea {
   height: 55px;
   bottom: 95px;
   transition: 0s !important;
@@ -16909,6 +16935,19 @@ body.chatbot::-webkit-scrollbar {
   max-width: calc(100% - 447px);
 }
 
+.chatbot .main-center-content-m-left.center-content .search-form textarea {
+  max-width: calc(100% - 691px);
+}
+@media only screen and (max-width: 1199px) {
+  .chatbot .main-center-content-m-left.center-content .search-form textarea {
+    max-width: 89%;
+  }
+}
+
+.chatbot .main-center-content-m-left.collapsed.center-content .search-form textarea {
+  max-width: calc(100% - 447px);
+}
+
 .chatbot .main-center-content-m-left.center-content.collapsed .search-form {
   max-width: calc(100% - 450px);
 }
@@ -16951,6 +16990,10 @@ body.chatbot::-webkit-scrollbar {
 }
 .chat-history-area-start .single-history:hover {
   background: #E9E9FF;
+}
+
+.chat-history-area-start .single-history i {
+  font-size: 20px;
 }
 
 .gallery-image-generator {
@@ -17707,6 +17750,7 @@ body.modal-open {
 [data-theme=dark] .question_answer__wrapper__chatbot .single__question__answer .question_user,
 [data-theme=dark] .pricing-button-one,
 [data-theme=dark] .main-center-content-m-left.center-content .search-form input,
+[data-theme=dark] .main-center-content-m-left.center-content .search-form textarea,
 [data-theme=dark] .share-reaction-area,
 [data-theme=dark] .accordion-area-one .accordion .accordion-item,
 [data-theme=dark] .image-generatore-right-sidebar-content .single-diamention .nice-select-wrap .drop,

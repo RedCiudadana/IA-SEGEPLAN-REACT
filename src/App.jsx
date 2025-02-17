@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import ChatbotOficio from "./pages/ChatbotOficio";
+import Prototipo2 from "./pages/Prototipo2";
+import Prototipo3 from "./pages/Prototipo3";
+import Prototipo4 from "./pages/Prototipo4";
+import Prototipo5 from "./pages/Prototipo5";
 import Login from "./pages/Login";
 
 function PrivateRoute({ isAuthenticated }) {
@@ -37,7 +41,11 @@ function App() {
         <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}> 
           <Route path="/" element={<MainLayout onLogout={handleLogout} />}> 
             <Route index element={<Home />} />
-            <Route path="chatbot" element={<ChatbotOficio />} />
+            <Route path="prototipo1" element={<ChatbotOficio />} />
+            <Route path="prototipo2" element={<Prototipo2 />} />
+            <Route path="prototipo3" element={<Prototipo3 />} />
+            <Route path="prototipo4" element={<Prototipo4 />} />
+            <Route path="prototipo5" element={<Prototipo5 />} />
           </Route>
         </Route>
       </Routes>

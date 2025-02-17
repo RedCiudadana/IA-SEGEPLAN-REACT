@@ -21,6 +21,12 @@ const Login = ({ onLogin }) => {
     }
   };
 
+  console.log(
+    'VITE_EMAIL:', import.meta.env.VITE_EMAIL,
+    'VITE_PASSWORD:', import.meta.env.VITE_PASSWORD
+  );
+  
+
   return (
     <div className="main-center-content-m-center center-content">
       <div style={{ margin: '100px auto' }}>

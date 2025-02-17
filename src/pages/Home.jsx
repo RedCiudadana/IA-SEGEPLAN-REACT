@@ -91,7 +91,7 @@ function Home() {
             role="tabpanel"
             aria-labelledby="pills-home-tab"
           >
-            <div className="row g-5 my-4">
+            <div className="row g-5 my-4 justify-content-center">
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
@@ -104,7 +104,7 @@ function Home() {
                       Genera borradores de cartas, oficios y documentos oficiales.
                       </p>
                     </div>
-                    <Link to="/chatbot" className="rts-btn btn-primary">
+                    <Link to="/prototipo1" className="rts-btn btn-primary">
                       <span>Explora</span>
                     </Link>
                   </div>
@@ -118,12 +118,12 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Asistente de Análisis de Expedientes</h5>
+                      <h5 className="title">Asistente Virtual de IA para Análisis de Expedientes / Inversión para el Desarrollo</h5>
                       <p className="disc">
-                      Evalúa expedientes y genera resúmenes automatizados para facilitar su análisis.
+                      Este asistente analiza expedientes de proyectos de inversión pública, facilitando su evaluación y optimización para un mejor uso de los recursos.
                       </p>
                     </div>
-                    <Link to="/" className="rts-btn btn-primary">
+                    <Link to="/prototipo2" className="rts-btn btn-primary">
                       <span>Explora</span>
                     </Link>
                   </div>
@@ -137,12 +137,12 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Asistente de Análisis de Políticas Públicas</h5>
+                      <h5 className="title">Asistente Virtual de IA para Análisis de Políticas Públicas / Planificación para el Desarrollo</h5>
                       <p className="disc">
-                      Evalúa políticas públicas y proporciona análisis comparativos y recomendaciones.
+                      Este asistente facilita el análisis de políticas públicas, identificando fortalezas, áreas de mejora y comparaciones con modelos internacionales.
                       </p>
                     </div>
-                    <Link to="/" className="rts-btn btn-primary">
+                    <Link to="/prototipo3" className="rts-btn btn-primary">
                       <span>Explora</span>
                     </Link>
                   </div>
@@ -158,12 +158,12 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Asistente de Redacción de Documentos</h5>
+                      <h5 className="title">Asistente Virtual de IA para Data Science / Análisis Estratégico para el Desarrollo</h5>
                       <p className="disc">
-                      Genera borradores de cartas, oficios y documentos oficiales.
+                      Este asistente usa técnicas de ciencia de datos para analizar tendencias en inversión, desarrollo y planificación estratégica.
                       </p>
                     </div>
-                    <Link to="/chatbot" className="rts-btn btn-primary">
+                    <Link to="/prototipo4" className="rts-btn btn-primary">
                       <span>Explora</span>
                     </Link>
                   </div>
@@ -177,36 +177,18 @@ function Home() {
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
-                      <h5 className="title">Asistente de Análisis de Expedientes</h5>
+                      <h5 className="title">Asistente Virtual de IA para Análisis de Prospección / Análisis Estratégico para el Desarrollo</h5>
                       <p className="disc">
-                      Evalúa expedientes y genera resúmenes automatizados para facilitar su análisis.
+                      Este asistente permite realizar análisis de prospectiva estratégica, evaluando escenarios futuros y proyecciones en planificación pública.
                       </p>
                     </div>
-                    <Link to="/" className="rts-btn btn-primary">
+                    <Link to="/prototipo5" className="rts-btn btn-primary">
                       <span>Explora</span>
                     </Link>
                   </div>
                 </div>
               </div>
 
-              <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div className="single-image-generator">
-                  <a href="#" className="thumbnail">
-                    <img src="assets/images/generator/03.jpg" alt="images" />
-                  </a>
-                  <div className="inner-content">
-                    <div className="left-content-area">
-                      <h5 className="title">Asistente de Análisis de Políticas Públicas</h5>
-                      <p className="disc">
-                      Evalúa políticas públicas y proporciona análisis comparativos y recomendaciones.
-                      </p>
-                    </div>
-                    <Link to="/" className="rts-btn btn-primary">
-                      <span>Explora</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           {/* Fin Tab 1 */}

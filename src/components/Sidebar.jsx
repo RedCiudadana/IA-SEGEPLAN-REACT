@@ -32,19 +32,31 @@ function Sidebar({ isCollapsed }) {
 
         {/* Segundo bloque de menús */}
         <div className="single-menu-wrapper">
-          <Link to="/chatbot" className="single-menu">
+          <Link to="/prototipo1" className="single-menu">
             <div className="icon">
               <img src="/assets/images/icons/04.png" alt="icons" />
             </div>
             <p>Prototipo 1</p>
           </Link>
-          <Link to="/" className="single-menu">
+          <Link to="/prototipo2" className="single-menu">
             <div className="icon">
               <img src="/assets/images/icons/05.png" alt="icons" />
             </div>
             <p>Prototipo 2</p>
           </Link>
-          <Link to="/login" className="single-menu">
+          <Link to="/prototipo3" className="single-menu">
+            <div className="icon">
+              <img src="/assets/images/icons/06.png" alt="icons" />
+            </div>
+            <p>Prototipo 3</p>
+          </Link>
+          <Link to="/prototipo4" className="single-menu">
+            <div className="icon">
+              <img src="/assets/images/icons/06.png" alt="icons" />
+            </div>
+            <p>Prototipo 3</p>
+          </Link>
+          <Link to="/prototipo5" className="single-menu">
             <div className="icon">
               <img src="/assets/images/icons/06.png" alt="icons" />
             </div>
