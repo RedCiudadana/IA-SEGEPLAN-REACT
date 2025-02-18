@@ -15779,7 +15779,7 @@ body.sal-disabled [data-sal|=flip] {
 .main-center-content-m-left .banner-badge {
   border-radius: 7px;
   padding: 40px;
-  background-image: url(/assets/images/bg/01.jpg);
+  background-image: url(/assets/images/red_elements/AI-SLI01.png);
   position: relative;
 }
 @media only screen and (max-width: 575px) {
@@ -15797,7 +15797,7 @@ body.sal-disabled [data-sal|=flip] {
 }
 .main-center-content-m-left .banner-badge .inner .title {
   font-size: 36px;
-  color: #fff;
+  color: #001C42;
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 575px) {
@@ -15814,7 +15814,7 @@ body.sal-disabled [data-sal|=flip] {
 }
 .main-center-content-m-left .banner-badge .inner p.dsic {
   font-size: 16px;
-  color: #fff;
+  color: #001C42;
 }
 .main-center-content-m-left .banner-badge .inner .inner-right-iamge {
   position: absolute;
@@ -17758,7 +17758,8 @@ body.modal-open {
 [data-theme=dark] .image-generatore-right-sidebar-content .nice-select-wrap,
 [data-theme=dark] .image-generatore-right-sidebar-content .number-image-wrapper .single-number,
 [data-theme=dark] .single-form-s-wrapper,
-[data-theme=dark] .search-form input
+[data-theme=dark] .search-form input,
+[data-theme=dark] .search-form textarea
 {
   background: #121B32;
   border-color: #e5e4ff1a;
@@ -17909,4 +17910,9 @@ body.modal-open {
 .disc code{
   font-size: 16px;
   font-family: var(--font-primary);
+}
+
+.disc h3, .disc h1, .disc h2, .disc h4, .disc h5, .disc h6{
+  font-family: var(--font-primary);
+  color: var(--color-body);
 }

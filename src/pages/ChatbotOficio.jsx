@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import OpenAI from 'openai';
 import ReactMarkdown from 'react-markdown';
+import { ClipLoader } from 'react-spinners';
 
 function ChatbotOficio() {
   const [userMessage, setUserMessage] = useState('');
@@ -10,6 +11,9 @@ function ChatbotOficio() {
 
   // Estado para el toast de "copiado"
   const [copiedMessage, setCopiedMessage] = useState('');
+
+  // Nuevo estado para la posición del popup
+  const [popup, setPopup] = useState({ visible: false, x: 0, y: 0 });
 
   // Función para extraer el título y el prompt
   const parseMessage = (message) => {
@@ -25,35 +29,44 @@ function ChatbotOficio() {
     return { title, prompt };
   };
 
+  // Cargar historial desde localStorage al inicio
+  useEffect(() => {
+    const savedHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    setChatHistory(savedHistory);
+  }, []);
+
+  // Guardar historial en localStorage cada vez que cambie
+  useEffect(() => {
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+  }, [chatHistory]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userMessage.trim()) return;
 
     setLoading(true);
-
     const openai = new OpenAI({
       apiKey: import.meta.env.VITE_OPENAI_API_KEY,
       dangerouslyAllowBrowser: true,
     });
 
     try {
+      const messages = [
+        { role: 'system', content: 'Eres un asistente especializado en redactar documentos formales. Por favor, devuelve todas tus respuestas en formato Markdown.' },
+        ...chatHistory.slice(-4).map((msg) => ({ role: 'user', content: msg.user })),
+        { role: 'user', content: userMessage }
+      ];
+
       const completion = await openai.chat.completions.create({
         model: 'gpt-4o-mini',
-        messages: [
-          {
-            role: 'system',
-            content: `Eres un asistente especializado en redactar documentos formales. 
-                      Por favor, devuelve todas tus respuestas en formato Markdown.`
-          },
-          {
-            role: 'user',
-            content: userMessage
-          }
-        ],
+        messages: messages,
       });
 
       const responseContent = completion.choices[0]?.message?.content || '';
-      setChatHistory([...chatHistory, { user: userMessage, bot: responseContent }]);
+      const newHistory = [...chatHistory, { user: userMessage, bot: responseContent }];
+
+      // Mantener solo las últimas 5 conversaciones
+      setChatHistory(newHistory.slice(-5));
       setUserMessage('');
     } catch (error) {
       console.error('Error al llamar a OpenAI:', error);
@@ -136,11 +149,12 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
   };
 
   // Copia el contenido al portapapeles y muestra un mensaje tipo “toast”
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text, event) => {
     navigator.clipboard.writeText(text)
       .then(() => {
-        setCopiedMessage('¡Prompt copiado al portapapeles!');
-        setTimeout(() => setCopiedMessage(''), 3000);
+        const { clientX, clientY } = event;
+        setPopup({ visible: true, x: clientX, y: clientY - 30 });
+        setTimeout(() => setPopup({ visible: false, x: 0, y: 0 }), 2000);
       })
       .catch((err) => {
         console.error('Error al copiar:', err);
@@ -166,7 +180,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
             >
               ✕
             </button>
-            <p className="dsic my-4" style={{ color: '#fff' }}>
+            <p className="dsic my-4">
               <b>🌟 ¡Bienvenido al módulo de Asistentes Virtuales de IA de SEGEPLAN! 🌟</b>
               <br />Esta herramienta ha sido diseñada para facilitar tu trabajo diario...
               <br /><br />📌 <b>¿Cómo funciona?</b>
@@ -207,15 +221,26 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
             </div>
           ))}
 
-          {loading && <div className="loading-indicator">Cargando...</div>}
+          {loading && (
+            <div className="loading-indicator" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+              <ClipLoader color="#497696" loading={loading} size={50} />
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="search-form">
-            <textarea
-              type="text"
-              placeholder="Escribe tu pregunta..."
-              value={userMessage}
-              onChange={(e) => setUserMessage(e.target.value)}
-            />
+          <textarea
+            type="text"
+            placeholder="Escribe tu pregunta..."
+            value={userMessage}
+            onChange={(e) => setUserMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit(e);
+              }
+            }}
+          />
+
             <button type="submit" disabled={loading}>
               <i className="fa-solid fa-arrow-up"></i>
             </button>
@@ -228,6 +253,28 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
           </div>
         </div>
       </div>
+
+      {popup.visible && (
+        <div
+          className="clipboard-popup"
+          style={{
+            position: 'absolute',
+            top: `${popup.y}px`,
+            left: `${popup.x}px`,
+            background: 'rgba(0, 0, 0, 0.7)',
+            color: '#fff',
+            padding: '6px 10px',
+            borderRadius: '5px',
+            fontSize: '1.3rem',
+            pointerEvents: 'none',
+            zIndex: 1000,
+            transition: 'opacity 0.3s',
+            opacity: 1
+          }}
+        >
+          📋 ¡Copiado al portapapeles!
+        </div>
+      )}
 
       {/* Right side bar */}
       <div className="right-side-bar-new-chat-option">
@@ -243,17 +290,14 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
                   <div 
                     key={msgIndex}
                     className="single-history"
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => copyToClipboard(prompt)}
+                    style={{ cursor: 'pointer', position: 'relative' }}
+                    onClick={(e) => copyToClipboard(prompt, e)}
                   >
-                    {/* Mostramos SOLO el título */}
                     <p>{title}</p>
-
-                    {/* Botón con icono de portapapeles */}
                     <button
                       onClick={(e) => {
-                        e.stopPropagation(); // evita que el clic se dispare dos veces
-                        copyToClipboard(prompt);
+                        e.stopPropagation();
+                        copyToClipboard(prompt, e);
                       }}
                     >
                       <i className="fa-regular fa-clipboard"></i>

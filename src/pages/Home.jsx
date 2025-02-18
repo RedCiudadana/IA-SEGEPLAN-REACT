@@ -19,7 +19,7 @@ function Home() {
           <br/>
           {/* <a href="#" className="rts-btn btn-blur">Partcipa</a> */}
           <div className="inner-right-iamge">
-            <img src="assets/images/banner/01.png" alt="banner" />
+            <img src="/assets/images/red_elements/AI-SLIDER.png" alt="banner" />
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@ function Home() {
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
-                    <img src="assets/images/generator/01.jpg" alt="images" />
+                    <img src="/assets/images/red_elements/AI-01.png" alt="images" />
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
@@ -114,7 +114,7 @@ function Home() {
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
-                    <img src="assets/images/generator/02.jpg" alt="images" />
+                    <img src="/assets/images/red_elements/AI-02.png" alt="images" />
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
@@ -133,7 +133,7 @@ function Home() {
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
-                    <img src="assets/images/generator/03.jpg" alt="images" />
+                    <img src="/assets/images/red_elements/AI-03.png" alt="images" />
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
@@ -154,7 +154,7 @@ function Home() {
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
-                    <img src="assets/images/generator/01.jpg" alt="images" />
+                    <img src="/assets/images/red_elements/AI-01.png" alt="images" />
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
@@ -173,7 +173,7 @@ function Home() {
               <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div className="single-image-generator">
                   <a href="#" className="thumbnail">
-                    <img src="assets/images/generator/02.jpg" alt="images" />
+                    <img src="/assets/images/red_elements/AI-02.png" alt="images" />
                   </a>
                   <div className="inner-content">
                     <div className="left-content-area">
