@@ -181,15 +181,19 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
               ✕
             </button>
             <p className="dsic my-4">
-              <b>🌟 ¡Bienvenido al módulo de Asistentes Virtuales de IA de SEGEPLAN! 🌟</b>
-              <br />Esta herramienta ha sido diseñada para facilitar tu trabajo diario...
-              <br /><br />📌 <b>¿Cómo funciona?</b>
-              <br />1. Ingresa la información clave...
-              <br />2. Revisa los ejemplos de prompts...
-              <br />3. Revisa y ajusta el resultado...
-              <br />4. Modifica y personaliza el texto...
-              <br /><br />📢 <b>Recuerda:</b> La IA es una herramienta...
-              <br /><br />⚠ <b>Supervisión humana recomendada</b>...
+          🌟 <b>¡Bienvenido al módulo de Asistentes Virtuales de IA de SEGEPLAN!</b> 🌟
+              <br/>
+              Esta herramienta ha sido diseñada para <b>facilitar tu trabajo diario</b>, permitiéndote generar documentos, analizar expedientes y evaluar políticas públicas con el apoyo de la inteligencia artificial.
+              <br/><br/>
+              📌 <b>¿Cómo funciona?</b>
+              <br/>🔹 Ingresa la información clave utilizando un prompt bien estructurado.
+              <br/>➡ Revisa los ejemplos de prompts en la columna de la derecha para optimizar tu solicitud. ✅
+              <br/>🔹 Revisa y ajusta el resultado generado por la IA antes de utilizarlo.
+              <br/>📝 Modifica y personaliza el texto según las necesidades institucionales. 🔍
+              <br/>
+              <br/>
+              📢 <b>Recuerda:</b> La IA es una herramienta de apoyo. Siempre revisa los resultados y haz los ajustes necesarios antes de su uso oficial.
+              ⚠ <b>Supervisión humana recomendada</b> antes de su publicación. 👀
             </p>
           </div>
         )}

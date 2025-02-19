@@ -54,13 +54,13 @@ function Sidebar({ isCollapsed }) {
             <div className="icon">
               <img src="/assets/images/icons/06.png" alt="icons" />
             </div>
-            <p>Prototipo 3</p>
+            <p>Prototipo 4</p>
           </Link>
           <Link to="/prototipo5" className="single-menu">
             <div className="icon">
               <img src="/assets/images/icons/06.png" alt="icons" />
             </div>
-            <p>Prototipo 3</p>
+            <p>Prototipo 5</p>
           </Link>
         </div>
 
