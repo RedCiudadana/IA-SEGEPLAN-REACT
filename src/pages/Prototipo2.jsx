@@ -75,6 +75,24 @@ function Prototipo2() {
     }
   };
 
+  // Cierra el banner superior
+  const handleClose = () => {
+    setIsVisible(false);
+  };
+
+  // Copia el contenido al portapapeles y muestra un mensaje tipo “toast”
+  const copyToClipboard = (text, event) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        const { clientX, clientY } = event;
+        setPopup({ visible: true, x: clientX, y: clientY - 30 });
+        setTimeout(() => setPopup({ visible: false, x: 0, y: 0 }), 2000);
+      })
+      .catch((err) => {
+        console.error('Error al copiar:', err);
+      });
+  };
+  
   const historyData = [
     {
       date: 'Plantillas para escribir oficios',
@@ -142,24 +160,6 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
       ]
     }
   ];
-
-  // Cierra el banner superior
-  const handleClose = () => {
-    setIsVisible(false);
-  };
-
-  // Copia el contenido al portapapeles y muestra un mensaje tipo “toast”
-  const copyToClipboard = (text, event) => {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        const { clientX, clientY } = event;
-        setPopup({ visible: true, x: clientX, y: clientY - 30 });
-        setTimeout(() => setPopup({ visible: false, x: 0, y: 0 }), 2000);
-      })
-      .catch((err) => {
-        console.error('Error al copiar:', err);
-      });
-  };
 
   return (
     <>
