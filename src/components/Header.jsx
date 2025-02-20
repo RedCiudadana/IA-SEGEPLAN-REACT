@@ -25,7 +25,7 @@ function Header({ onToggleSidebar }) {
               {/* Left side with logo */}
               <div className="left-logo-area">
                 <Link to="/">
-                  <img src="/assets/images/LOGO-RED_NEGRO.png" alt="logo-image" />
+                  <img style={{marginLeft:'10px'}} src="/assets/images/LOGO-RED_NEGRO.png" alt="logo-image" />
                 </Link>
                 <button
                   className="left-side-open-clouse"

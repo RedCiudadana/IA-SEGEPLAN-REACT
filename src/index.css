@@ -49,7 +49,7 @@
   --color-primary-2: #33B89F;
   --color-secondary: #1F1F25;
   --color-body: #497696;
-  --color-heading-1: #083A5E;
+  --color-heading-1: #02324f;
   --color-white: #fff;
   --color-success: #3EB75E;
   --color-danger: #FF0003;
@@ -15186,7 +15186,7 @@ body.sal-disabled [data-sal|=flip] {
   text-decoration: none;
 }
 .rts-btn.btn-primary {
-  background: var(--color-primary);
+  background: #02ac8b;
 }
 .rts-btn.btn-primary:hover {
   background: #151f39;
@@ -15626,7 +15626,7 @@ body.sal-disabled [data-sal|=flip] {
   margin: 0;
   font-size: 16px;
   line-height: 20px;
-  color: #001C42;
+  color: #02324f;
   font-weight: 500;
   position: relative;
   transition: 0.3s;
@@ -15637,7 +15637,7 @@ body.sal-disabled [data-sal|=flip] {
   border: 1px solid #E5E4FF;
 }
 .dash-board-main-wrapper .left-side-bar .single-menu-wrapper .single-menu:hover p {
-  color: var(--color-primary);
+  color: #02ac8b;
 }
 .dash-board-main-wrapper .left-side-bar .single-menu-wrapper a.collapse-btn {
   position: relative;
@@ -15665,7 +15665,7 @@ body.sal-disabled [data-sal|=flip] {
   padding-left: 70px;
 }
 .dash-board-main-wrapper .left-side-bar .single-menu-wrapper .rts-default-sidebar-list li a {
-  color: #001C42;
+  color: #02324f;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -15797,7 +15797,7 @@ body.sal-disabled [data-sal|=flip] {
 }
 .main-center-content-m-left .banner-badge .inner .title {
   font-size: 36px;
-  color: #001C42;
+  color: #02324f;
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 575px) {
@@ -15814,11 +15814,11 @@ body.sal-disabled [data-sal|=flip] {
 }
 .main-center-content-m-left .banner-badge .inner p.dsic {
   font-size: 16px;
-  color: #001C42;
+  color: #02324f;
 }
 .main-center-content-m-left .banner-badge .inner .inner-right-iamge {
   position: absolute;
-  bottom: -33px;
+  bottom: 0px;
   right: 130px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
@@ -16017,7 +16017,7 @@ body.sal-disabled [data-sal|=flip] {
   padding: 3px 10px;
   border-radius: 4px;
   background: #E2E2FF;
-  color: #001C42;
+  color: #02324f;
 }
 .generated_image__wraper .bottom-image .share-reaction-area {
   margin: 0;
@@ -16038,7 +16038,7 @@ body.sal-disabled [data-sal|=flip] {
   position: absolute;
   left: 18px;
   top: 21px;
-  color: #001C42;
+  color: #02324f;
 }
 .audio-main-generator-start textarea {
   height: 142px;
@@ -16046,7 +16046,7 @@ body.sal-disabled [data-sal|=flip] {
   border: 1px solid #E5E4FF;
   border-radius: 4px;
   padding: 15px 45px;
-  color: #001C42;
+  color: #02324f;
   font-size: 14px;
 }
 .audio-main-generator-start .button-wrapper-generator {
@@ -16983,13 +16983,18 @@ body.chatbot::-webkit-scrollbar {
 }
 .chat-history-area-start .single-history p {
   margin-bottom: 0;
-  color: #001C42;
+  color: #02324f;
   font-size: 14px;
   font-weight: 100;
+  line-height: 14px;
   font-family: var(--font-secondary);
 }
 .chat-history-area-start .single-history:hover {
   background: #E9E9FF;
+}
+
+.chat-history-area-start .single-history:hover p, .chat-history-area-start .single-history:hover i{
+  color: #02ac8b;
 }
 
 .chat-history-area-start .single-history i {
@@ -17197,16 +17202,16 @@ body.chatbot::-webkit-scrollbar {
 .image-generatore-right-sidebar-content .single-diamention .title {
   font-size: 16px;
   line-height: 1.2;
-  color: #001C42;
+  color: #02324f;
 }
 .image-generatore-right-sidebar-content .single-diamention .nice-select-wrap .drop {
   background-image: none;
-  color: #001C42;
+  color: #02324f;
   background-color: #fff;
   border-color: #CFCFFF !important;
 }
 .image-generatore-right-sidebar-content .single-diamention .nice-select-wrap .drop::after {
-  color: #001C42;
+  color: #02324f;
 }
 .image-generatore-right-sidebar-content .range-main-wrapper .container1 {
   display: flex;
@@ -17242,7 +17247,7 @@ body.chatbot::-webkit-scrollbar {
   font-size: 16px;
   transition: 0.3s;
   cursor: pointer;
-  color: #001C42;
+  color: #02324f;
 }
 .image-generatore-right-sidebar-content .number-image-wrapper .single-number:hover {
   background: #CFCFFF;
@@ -17915,4 +17920,12 @@ body.modal-open {
 .disc h3, .disc h1, .disc h2, .disc h4, .disc h5, .disc h6{
   font-family: var(--font-primary);
   color: var(--color-body);
+}
+
+[data-theme=dark] .chat-history-area-start .single-history:hover p {
+  color: #000;
+}
+
+[data-theme=dark] .chat-history-area-start .single-history:hover i {
+  color: #000;
 }
