@@ -3,19 +3,41 @@ import OpenAI from 'openai';
 import ReactMarkdown from 'react-markdown';
 import { ClipLoader } from 'react-spinners';
 
+// ***** Importar la versión legacy *****
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf';
+
+// ***** Asignar la ruta del worker (en carpeta public) *****
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
+
 function Prototipo4() {
   const [userMessage, setUserMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  // Estado para el toast de "copiado"
+  // Estado para el mensaje de "copiado"
   const [copiedMessage, setCopiedMessage] = useState('');
 
-  // Nuevo estado para la posición del popup
+  // Estado para la posición del popup de "copiado"
   const [popup, setPopup] = useState({ visible: false, x: 0, y: 0 });
 
-  // Función para extraer el título y el prompt
+  // NUEVO ESTADO PARA GUARDAR TEXTO DEL PDF (si lo requieres para análisis interno)
+  const [pdfContent, setPdfContent] = useState('');
+
+  // NUEVO ESTADO PARA MENSAJE DE SUBIDA EN UNA CARD
+  const [uploadMessage, setUploadMessage] = useState('');
+
+  // Efecto para ocultar automáticamente el mensaje de subida después de 3s
+  useEffect(() => {
+    if (uploadMessage) {
+      const timer = setTimeout(() => {
+        setUploadMessage('');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [uploadMessage]);
+
+  // Función para extraer el título y el prompt de los ejemplos
   const parseMessage = (message) => {
     const lines = message.split('\n');
     const title = lines[0].trim(); // primera línea como título
@@ -23,7 +45,7 @@ function Prototipo4() {
     // Buscamos dónde empieza "📝 Prompt:"
     const promptIndex = message.indexOf('📝 Prompt:');
     let prompt = promptIndex >= 0 
-      ? message.substring(promptIndex).trim() 
+      ? message.substring(promptIndex).trim()
       : message.trim();
 
     return { title, prompt };
@@ -40,9 +62,50 @@ function Prototipo4() {
     localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
   }, [chatHistory]);
 
+  // Manejar la carga del archivo PDF
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Verificamos que sea PDF
+    if (file.type !== 'application/pdf') {
+      setUploadMessage('Por favor, selecciona un archivo PDF');
+      return;
+    }
+
+    try {
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const typedArray = new Uint8Array(event.target.result);
+
+        // Cargamos el PDF usando pdfjsLib
+        const pdf = await pdfjsLib.getDocument(typedArray).promise;
+        let extractedText = '';
+
+        // Extraer texto página por página
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const textContent = await page.getTextContent();
+          const pageText = textContent.items.map((item) => item.str).join(' ');
+          extractedText += pageText + '\n';
+        }
+
+        // Guardamos el contenido en un estado (para uso interno o como contexto)
+        setPdfContent(extractedText);
+
+        setUploadMessage('Contenido del PDF cargado correctamente y listo para usarse.');
+      };
+      reader.readAsArrayBuffer(file);
+    } catch (error) {
+      console.error('Error al procesar el PDF:', error);
+      setUploadMessage('Hubo un error al procesar el PDF.');
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userMessage.trim()) return;
+    // Si no hay mensaje del usuario y no hay PDF, no hacemos nada
+    if (!userMessage.trim() && !pdfContent.trim()) return;
 
     setLoading(true);
     const openai = new OpenAI({
@@ -50,24 +113,61 @@ function Prototipo4() {
       dangerouslyAllowBrowser: true,
     });
 
-    try {
-      const messages = [
-        { role: 'system', content: 'Eres un asistente especializado en redactar documentos formales. Por favor, devuelve todas tus respuestas en formato Markdown.' },
-        ...chatHistory.slice(-4).map((msg) => ({ role: 'user', content: msg.user })),
-        { role: 'user', content: userMessage }
-      ];
+    // Preparar los mensajes para el chat
+    const messages = [
+      {
+        role: 'system',
+        content:
+          'Eres un asistente especializado en redactar documentos formales. Por favor, devuelve todas tus respuestas en formato Markdown.'
+      }
+    ];
 
+    // Agregar contenido del PDF como contexto en un mensaje del tipo "system"
+    // para que el modelo tenga acceso a esta información,
+    // sin incluirlo en el mensaje del usuario.
+    if (pdfContent.trim()) {
+      messages.push({
+        role: 'system',
+        content: `Información proveniente del PDF:\n${pdfContent}`
+      });
+    }
+
+    // Agregamos las últimas 4 interacciones del historial
+    messages.push(
+      ...chatHistory.slice(-4).map((msg) => ({ role: 'user', content: msg.user }))
+    );
+
+    // Ahora, el texto que se envía como "user" NO incluye el PDF completo,
+    // solo una indicación de que se adjuntó (en caso de existir).
+    const finalUserMessage = pdfContent.trim()
+      ? `Se adjuntó un PDF. Pregunta/Comentario:\n${userMessage}`
+      : userMessage;
+
+    // Agregamos el mensaje del usuario
+    messages.push({ role: 'user', content: finalUserMessage });
+
+    try {
       const completion = await openai.chat.completions.create({
         model: 'gpt-4o-mini',
         messages: messages,
       });
 
       const responseContent = completion.choices[0]?.message?.content || '';
-      const newHistory = [...chatHistory, { user: userMessage, bot: responseContent }];
 
+      // Actualizamos el historial
+      const newHistory = [
+        ...chatHistory,
+        { user: finalUserMessage, bot: responseContent },
+      ];
       // Mantener solo las últimas 5 conversaciones
       setChatHistory(newHistory.slice(-5));
       setUserMessage('');
+
+      // ***** OJO: Aquí "borramos" el contenido del PDF *****
+      setPdfContent('');
+
+      // Si quieres limpiar el PDF después de cada envío, descomenta:
+      // setPdfContent('');
     } catch (error) {
       console.error('Error al llamar a OpenAI:', error);
     } finally {
@@ -75,21 +175,40 @@ function Prototipo4() {
     }
   };
 
+  // Cierra el banner superior
+  const handleClose = () => {
+    setIsVisible(false);
+  };
+
+  // Copia el contenido al portapapeles y muestra un mensaje tipo "toast"
+  const copyToClipboard = (text, event) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        const { clientX, clientY } = event;
+        setPopup({ visible: true, x: clientX, y: clientY - 30 });
+        setTimeout(() => setPopup({ visible: false, x: 0, y: 0 }), 2000);
+      })
+      .catch((err) => {
+        console.error('Error al copiar:', err);
+      });
+  };
+
   const historyData = [
     {
       date: 'Plantillas para escribir oficios',
       messages: [
-        `Carta Formal de Solicitud de Cooperación Técnica
+        ` Ejemplo de Prompt Estructurado
+&quot;Analiza este expediente de inversión en infraestructura y extrae los aspectos clave: objetivos,
+presupuesto, riesgos y alineación con el Plan Nacional de Desarrollo. Genera recomendaciones
+estratégicas para su aprobación.&quot;
 
-Contexto: SEGEPLAN busca establecer una alianza con una universidad para fortalecer la planificación territorial.
-📝 Prompt:
-*"Redacta una carta formal en nombre de SEGEPLAN dirigida al rector de una universidad, solicitando cooperación técnica en planificación territorial. La carta debe incluir:
-1. Saludo formal y presentación de SEGEPLAN como entidad rectora de la planificación en Guatemala.
-2. Contexto de la solicitud, explicando la necesidad de fortalecer capacidades técnicas en desarrollo territorial.
-3. Propuesta de colaboración, mencionando el intercambio de información, asistencia técnica y posibles convenios.
-4. Cierre formal con una invitación a una reunión para discutir detalles y firmar un acuerdo. 
-La carta debe tener un tono formal, institucional y ser clara en sus intenciones."*,`,
-
+ Estructura del Informe
+Sección Descripción
+Resumen Ejecutivo Descripción del expediente, objetivos y criterios evaluados.
+Viabilidad del Proyecto Cumplimiento de normativas y requisitos.
+Análisis Financiero Evaluación del presupuesto y fuentes de financiamiento.
+Identificación de Riesgos Posibles obstáculos y medidas de mitigación.
+Recomendaciones Finales Sugerencias para mejorar el proyecto o pasos siguientes.`,
         `Memorando Interno para Cambio en Procedimientos Administrativos
 
 Contexto: SEGEPLAN implementará nuevos procedimientos administrativos internos y necesita informar a su personal.
@@ -101,7 +220,6 @@ Debe incluir:
 3. Descripción de los nuevos procedimientos, detallando qué cambia, desde cuándo aplica y qué se espera del personal.
 4. Indicaciones adicionales, como dónde encontrar más información o a quién dirigirse para dudas.
 5. Cierre con un tono profesional y llamado a la acción para asegurar que todos los funcionarios cumplan con las nuevas directrices."*,`,
-
         `Informe Ejecutivo sobre Avances de un Proyecto
 
 Contexto: SEGEPLAN debe presentar un informe de avances sobre un proyecto de planificación urbana financiado por cooperación internacional.
@@ -114,7 +232,6 @@ El informe debe incluir:
 4. Desafíos y riesgos identificados, junto con estrategias para mitigarlos.
 5. Próximos pasos y acciones previstas para los próximos tres meses. 
 Debe mantener un tono técnico, claro y enfocado en resultados medibles."*,`,
-
         `Solicitud de Presupuesto para un Evento de SEGEPLAN
 
 Contexto: SEGEPLAN necesita solicitar presupuesto para un evento sobre transformación digital en la administración pública.
@@ -126,7 +243,6 @@ Debe incluir:
 3. Justificación del presupuesto, resaltando el impacto y beneficios esperados.
 4. Solicitud de aprobación y pasos siguientes en el proceso administrativo. 
 Debe mantener un tono formal y estructurado, con cifras estimadas y referencias a lineamientos institucionales."*,`,
-
         `Respuesta Oficial a una Consulta Ciudadana sobre Planificación Territorial
 
 Contexto: Un ciudadano ha solicitado información sobre los proyectos de planificación territorial en su municipio. SEGEPLAN debe responder formalmente.
@@ -143,27 +259,9 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
     }
   ];
 
-  // Cierra el banner superior
-  const handleClose = () => {
-    setIsVisible(false);
-  };
-
-  // Copia el contenido al portapapeles y muestra un mensaje tipo “toast”
-  const copyToClipboard = (text, event) => {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        const { clientX, clientY } = event;
-        setPopup({ visible: true, x: clientX, y: clientY - 30 });
-        setTimeout(() => setPopup({ visible: false, x: 0, y: 0 }), 2000);
-      })
-      .catch((err) => {
-        console.error('Error al copiar:', err);
-      });
-  };
-
   return (
     <>
-      {/** Si hay algo en copiedMessage, muestra un toast **/}
+      {/* Si hay algo en copiedMessage, muestra un "toast" o aviso */}
       {copiedMessage && (
         <div className="toast-notification">
           {copiedMessage}
@@ -227,24 +325,57 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
           ))}
 
           {loading && (
-            <div className="loading-indicator" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <div
+              className="loading-indicator"
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%',
+              }}
+            >
               <ClipLoader color="#497696" loading={loading} size={50} />
             </div>
           )}
 
+          {/* FORMULARIO DE ENVÍO */}
           <form onSubmit={handleSubmit} className="search-form">
-          <textarea
-            type="text"
-            placeholder="Escribe tu pregunta..."
-            value={userMessage}
-            onChange={(e) => setUserMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmit(e);
-              }
-            }}
-          />
+            {/* Botón para cargar PDF */}
+            <input 
+              type="file" 
+              accept="application/pdf"
+              onChange={handleFileUpload} 
+              style={{ marginBottom: '1rem' }}
+            />
+
+            {/* Mostrar el mensaje de subida dentro de una card amigable */}
+            {uploadMessage && (
+              <div
+                style={{
+                  position: 'absolute',
+                  background: '#f8f9fa', // Gris claro
+                  border: '1px solid #dee2e6', 
+                  borderRadius: '8px',
+                  padding: '1rem',
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.15)',
+                  zIndex: 9999,
+                }}
+              >
+                <strong>{uploadMessage}</strong>
+              </div>
+            )}
+
+            <textarea
+              placeholder="Escribe tu pregunta o petición..."
+              value={userMessage}
+              onChange={(e) => setUserMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSubmit(e);
+                }
+              }}
+            />
 
             <button type="submit" disabled={loading}>
               <i className="fa-solid fa-arrow-up"></i>
@@ -259,6 +390,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
         </div>
       </div>
 
+      {/* Popup de "Copiado al portapapeles" */}
       {popup.visible && (
         <div
           className="clipboard-popup"
@@ -274,7 +406,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
             pointerEvents: 'none',
             zIndex: 1000,
             transition: 'opacity 0.3s',
-            opacity: 1
+            opacity: 1,
           }}
         >
           📋 ¡Copiado al portapapeles!
@@ -292,7 +424,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
                 const { title, prompt } = parseMessage(message);
 
                 return (
-                  <div 
+                  <div
                     key={msgIndex}
                     className="single-history"
                     style={{ cursor: 'pointer', position: 'relative' }}
