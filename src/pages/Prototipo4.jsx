@@ -53,13 +53,13 @@ function Prototipo4() {
 
   // Cargar historial desde localStorage al inicio
   useEffect(() => {
-    const savedHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    const savedHistory = JSON.parse(localStorage.getItem('chatHistory4')) || [];
     setChatHistory(savedHistory);
   }, []);
 
   // Guardar historial en localStorage cada vez que cambie
   useEffect(() => {
-    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    localStorage.setItem('chatHistory4', JSON.stringify(chatHistory));
   }, [chatHistory]);
 
   // Manejar la carga del archivo PDF
@@ -292,7 +292,7 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
               <br/>
               <br/>
               📢 <b>Recuerda:</b> La IA es una herramienta de apoyo. Siempre revisa los resultados y haz los ajustes necesarios antes de su uso oficial.
-              ⚠ <b>Supervisión humana recomendada</b> antes de su publicación. 👀
+              <br/>⚠ <b>Supervisión humana recomendada</b> antes de su publicación. 👀
             </p>
           </div>
         )}

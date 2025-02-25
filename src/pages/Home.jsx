@@ -100,9 +100,9 @@ function Home() {
                   <div className="inner-content">
                     <div className="left-content-area">
                       <h5 className="title">Asistente de Redacción de Documentos</h5>
-                      <p className="disc">
+                      {/* <p className="disc">
                       Genera borradores de cartas, oficios y documentos oficiales.
-                      </p>
+                      </p> */}
                     </div>
                     <Link to="/prototipo1" className="rts-btn btn-primary">
                       <span>Explora</span>
@@ -119,9 +119,9 @@ function Home() {
                   <div className="inner-content">
                     <div className="left-content-area">
                       <h5 className="title">Asistente Virtual de IA para Análisis de Expedientes / Inversión para el Desarrollo</h5>
-                      <p className="disc">
+                      {/* <p className="disc">
                       Este asistente analiza expedientes de proyectos de inversión pública, facilitando su evaluación y optimización para un mejor uso de los recursos.
-                      </p>
+                      </p> */}
                     </div>
                     <Link to="/prototipo2" className="rts-btn btn-primary">
                       <span>Explora</span>
@@ -138,9 +138,9 @@ function Home() {
                   <div className="inner-content">
                     <div className="left-content-area">
                       <h5 className="title">Asistente Virtual de IA para Análisis de Políticas Públicas / Planificación para el Desarrollo</h5>
-                      <p className="disc">
+                      {/* <p className="disc">
                       Este asistente facilita el análisis de políticas públicas, identificando fortalezas, áreas de mejora y comparaciones con modelos internacionales.
-                      </p>
+                      </p> */}
                     </div>
                     <Link to="/prototipo3" className="rts-btn btn-primary">
                       <span>Explora</span>
@@ -159,9 +159,9 @@ function Home() {
                   <div className="inner-content">
                     <div className="left-content-area">
                       <h5 className="title">Asistente Virtual de IA para Data Science / Análisis Estratégico para el Desarrollo</h5>
-                      <p className="disc">
+                      {/* <p className="disc">
                       Este asistente usa técnicas de ciencia de datos para analizar tendencias en inversión, desarrollo y planificación estratégica.
-                      </p>
+                      </p> */}
                     </div>
                     <Link to="/prototipo4" className="rts-btn btn-primary">
                       <span>Explora</span>
@@ -178,9 +178,9 @@ function Home() {
                   <div className="inner-content">
                     <div className="left-content-area">
                       <h5 className="title">Asistente Virtual de IA para Análisis de Prospección / Análisis Estratégico para el Desarrollo</h5>
-                      <p className="disc">
+                      {/* <p className="disc">
                       Este asistente permite realizar análisis de prospectiva estratégica, evaluando escenarios futuros y proyecciones en planificación pública.
-                      </p>
+                      </p> */}
                     </div>
                     <Link to="/prototipo5" className="rts-btn btn-primary">
                       <span>Explora</span>
