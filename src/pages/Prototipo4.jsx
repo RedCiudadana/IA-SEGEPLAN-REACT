@@ -284,11 +284,11 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
               Este asistente usa técnicas de <b>ciencia de datos</b> para analizar tendencias en inversión, desarrollo y planificación estratégica.
               <br/><br/>
               📌 <b>¿Cómo funciona?</b>
-              <br/>1️⃣ Carga el documento de política pública a analizar.
-              <br/>2️⃣ El asistente genera un resumen ejecutivo con los puntos clave.
-              <br/>3️⃣ Compara la política con referencias internacionales y casos de éxito.
-              <br/>4️⃣ Identifica riesgos, desafíos y oportunidades de mejora.
-              <br/>5️⃣ Descarga el análisis final con recomendaciones estratégicas.
+              <br/>  1️⃣ Carga bases de datos en formato Excel o CSV.
+              <br/>  2️⃣ Especifica qué patrones o correlaciones deseas analizar.
+              <br/>  3️⃣ El asistente genera gráficos interactivos y modelos predictivos.
+              <br/>  4️⃣ Proporciona informes con visualizaciones y tendencias clave.
+              <br/>  5️⃣ Descarga los resultados para reportes estratégicos.
               <br/>
               <br/>
               📢 <b>Recuerda:</b> La IA es una herramienta de apoyo. Siempre revisa los resultados y haz los ajustes necesarios antes de su uso oficial.
