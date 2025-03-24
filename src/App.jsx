@@ -9,6 +9,9 @@ import Prototipo4 from "./pages/Prototipo4";
 import Prototipo5 from "./pages/Prototipo5";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./utils/firebaseConfig";
+
 
 function PrivateRoute({ isAuthenticated }) {
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
@@ -18,19 +21,22 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    setIsAuthenticated(!!token);
-  }, []);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+    });
+  
+    return () => unsubscribe();
+  }, []);   
 
   const handleLogin = () => {
-    localStorage.setItem("authToken", "fake-token");
     setIsAuthenticated(true);
   };
-
+  
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsAuthenticated(false);
-  };
+    auth.signOut().then(() => {
+      setIsAuthenticated(false);
+    });
+  };  
 
   return (
     <BrowserRouter>

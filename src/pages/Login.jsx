@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../utils/firebaseConfig';
+import { logUserLogin } from '../utils/logUser';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validación de credenciales específicas
-    const validEmail = import.meta.env.VITE_EMAIL;
-    const validPassword = import.meta.env.VITE_PASSWORD;
-
-    if (email === validEmail && password === validPassword) {
-      onLogin(); // Cambia el estado de autenticación
-      navigate('/'); // Redirige al usuario al índice después del login
-    } else {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      await logUserLogin(user);
+      onLogin(); 
+      navigate('/');
+    } catch (error) {
       alert('Correo o contraseña incorrectos');
+      console.error(error.message);
     }
   };
 
