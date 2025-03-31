@@ -47,7 +47,7 @@ function ChatbotOficio() {
     setLoading(true);
   
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/agent', {
+      const response = await fetch('https://reyes10101110.pythonanywhere.com/api/agent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
