@@ -43,37 +43,35 @@ function ChatbotOficio() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userMessage.trim()) return;
-
+  
     setLoading(true);
-    const openai = new OpenAI({
-      apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true,
-    });
-
+  
     try {
-      const messages = [
-        { role: 'system', content: 'Eres un asistente especializado en redactar documentos formales. Por favor, devuelve todas tus respuestas en formato Markdown.' },
-        ...chatHistory.slice(-4).map((msg) => ({ role: 'user', content: msg.user })),
-        { role: 'user', content: userMessage }
-      ];
-
-      const completion = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
-        messages: messages,
+      const response = await fetch('http://127.0.0.1:5000/api/agent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ input: userMessage }),
       });
-
-      const responseContent = completion.choices[0]?.message?.content || '';
+  
+      if (!response.ok) {
+        throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      const responseContent = data.response || '';
+  
       const newHistory = [...chatHistory, { user: userMessage, bot: responseContent }];
-
-      // Mantener solo las últimas 5 conversaciones
       setChatHistory(newHistory.slice(-5));
       setUserMessage('');
     } catch (error) {
-      console.error('Error al llamar a OpenAI:', error);
+      console.error('Error al comunicarse con el backend:', error);
     } finally {
       setLoading(false);
     }
   };
+  
 
   const historyData = [
     {
