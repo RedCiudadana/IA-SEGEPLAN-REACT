@@ -47,17 +47,21 @@ function ChatbotOficio() {
     setLoading(true);
   
     try {
+      // Convertir el historial a formato tipo OpenAI
+      const messages = chatHistory.flatMap(entry => ([
+        { role: 'user', content: entry.user },
+        { role: 'assistant', content: entry.bot }
+      ]));
+  
+      messages.push({ role: 'user', content: userMessage });
+  
       const response = await fetch('https://ia-api-flask.onrender.com/api/agent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ input: userMessage }),
+        body: JSON.stringify({ messages }), 
       });
-  
-      if (!response.ok) {
-        throw new Error(`Error en la respuesta del servidor: ${response.statusText}`);
-      }
   
       const data = await response.json();
       const responseContent = data.response || '';
@@ -71,6 +75,7 @@ function ChatbotOficio() {
       setLoading(false);
     }
   };
+  
   
 
   const historyData = [
