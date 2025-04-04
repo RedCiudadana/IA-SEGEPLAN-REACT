@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import OpenAI from 'openai';
 import ReactMarkdown from 'react-markdown';
 import { ClipLoader } from 'react-spinners';
@@ -9,18 +9,22 @@ function ChatbotOficio() {
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  // Estado para el toast de "copiado"
   const [copiedMessage, setCopiedMessage] = useState('');
 
-  // Nuevo estado para la posición del popup
   const [popup, setPopup] = useState({ visible: false, x: 0, y: 0 });
+
+  const bottomRef = useRef(null);
+
+  const clearChatHistory = () => {
+    setChatHistory([]);
+    localStorage.removeItem('chatHistory');
+  };  
 
   // Función para extraer el título y el prompt
   const parseMessage = (message) => {
     const lines = message.split('\n');
     const title = lines[0].trim(); // primera línea como título
 
-    // Buscamos dónde empieza "📝 Prompt:"
     const promptIndex = message.indexOf('📝 Prompt:');
     let prompt = promptIndex >= 0 
       ? message.substring(promptIndex).trim() 
@@ -39,6 +43,13 @@ function ChatbotOficio() {
   useEffect(() => {
     localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
   }, [chatHistory]);
+
+  useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [chatHistory, loading]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -259,6 +270,8 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
             </p>
           </div>
         </div>
+
+        <div ref={bottomRef} />
       </div>
 
       {popup.visible && (
@@ -314,6 +327,14 @@ Debe mantener un tono accesible pero formal, asegurando que la información sea 
               })}
             </div>
           ))}
+          <div className="chat-history-area-start">
+            <button 
+              onClick={clearChatHistory}
+              className="rts-btn btn-primary my-4 width-content"
+            >
+              Borrar Historial 🗑️
+            </button>
+          </div>
         </div>
 
         <div className="right-side-open-clouse" id="collups-right">
